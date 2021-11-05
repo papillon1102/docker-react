@@ -1,0 +1,16 @@
+
+# node:latest is error , so we downed it to node:14.
+# It will be much better to use: node:14-alpine (NOTE)
+FROM node:14
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+COPY ./ ./
+
+CMD ["npm", "run" ,"start"]
+
+
+# docker run -it -p 3000:3000 IMAGE_ID
+# docker run -p 3000:3000 -v /app/node_modules -v ./src:/app/src cc7b48479ca9
